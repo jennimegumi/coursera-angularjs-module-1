@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <style>
+    .green {
+      color: green;
+    }
+    .red {
+      color: red;
+    }
+    /* .border-green {
+      border: 1px solid green !important;
+    }
+    .border-red {
+      border: 1px solid red !important;
+    } */
+  </style>
+<body>
+   <div ng-controller="LunchCheckController" class="container">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input id="lunch-menu" type="text"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control border border-success"
+             ng-model="lunchItems"
+             
+             ng-class="{
+              border-green:focus : lunchItems != '',
+              border-red:focus: lunchItems === ''
+             }">
+         </div>
+         <div class="form-group">
+             <button ng-click="checkLunchItems()" class="btn btn-default">Check If Too Much</button>
+         </div>
+         <div class="form-group message">
+          <p ng-model="message" ng-class="{green : lunchItems != '', red : lunchItems === ''}">
+           <!-- Your message can go here. -->
+           {{message}}
+          </p>
+         </div>
+   </div>
+</body>
+</html>
